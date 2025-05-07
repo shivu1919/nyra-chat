@@ -2,21 +2,26 @@ import React from 'react'
 import '../css/Login.css'
 import { useState } from 'react'
 import {Link, useNavigate} from "react-router-dom"
-import { auth } from '../Firebase'
+import { auth, db } from '../Firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import {doc, setDoc} from "firebase/firestore"
+
 
 function Login() {
 
   const[email,setEmail] = useState('')
   const[password,setPassword] = useState('')
   const navigate = useNavigate()
+ 
+
 
   const userLogin = ()=>{
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+
+      const user = userCredential.user;
       alert("Logged in successfully") 
       navigate("/chat")
-      const user = userCredential.user;
       // ...
     })
     .catch((error) => {
@@ -34,6 +39,10 @@ function Login() {
            
             <div className='login_form'>
                 <h1>Login</h1>
+
+                
+             
+
                 <div style={{width:'100%'}}>
                 <label id="lbl">Email:</label>
                 <input 
