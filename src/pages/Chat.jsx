@@ -13,9 +13,9 @@ function Chat() {
   const[newMessage, setNewMessage] = useState('')
 
   const handleSendMessage = async (e)=>{
-      e.preventDefault();
+    /* e.preventDefault();
 
-      if(newMessage.trim()==='') return;
+    if(newMessage.trim()==='') return;
       const messageRef = collection(db, 'chats','room1','messages')
 
       await addDoc(messageRef,{
@@ -23,7 +23,8 @@ function Chat() {
         message:newMessage.trim(),
         timestamp:serverTimestamp()
       });
-      setNewMessage('')
+      setNewMessage('') */
+    alert('sending messages is disabled now')
   }
 
     //fetching the users
